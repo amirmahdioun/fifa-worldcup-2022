@@ -1,0 +1,48 @@
+@font-face {
+    font-family: QatarWorldCup;
+    font-style: normal;
+    font-weight: 900;
+    src: url('../files/otf/Qatar2022-Heavy.otf');
+    src: url('../files/woff2/Qatar2022-Heavy.woff2') format('woff2'),
+    url('../files/woff/Qatar2022-Heavy.woff') format('woff')
+}
+@font-face {
+    font-family: QatarWorldCup;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../files/otf/Qatar2022-Bold.otf');
+    src: url('../files/woff2/Qatar2022-Bold.woff2') format('woff2'),
+    url('../files/woff/Qatar2022-Bold.woff') format('woff')
+}
+@font-face {
+    font-family: QatarWorldCup;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../files/otf/Qatar2022-Medium.otf');
+    src: url('../files/woff2/Qatar2022-Medium.woff2') format('woff2'),
+    url('../files/woff/Qatar2022-Medium.woff') format('woff');
+}
+@font-face {
+    font-family: QatarWorldCupAr;
+    font-style: normal;
+    font-weight: 900;
+    src: url('../files/otf/Qatar2022Arabic-Heavy.otf');
+    src: url('../files/woff2/Qatar2022Arabic-Heavy.woff2') format('woff2'),
+    url('../files/woff/Qatar2022Arabic-Heavy.woff') format('woff')
+}
+@font-face {
+    font-family: QatarWorldCupAr;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../files/otf/Qatar2022Arabic-Bold.otf');
+    src: url('../files/woff2/Qatar2022Arabic-Bold.woff2') format('woff2'),
+    url('../files/woff/Qatar2022Arabic-Bold.woff') format('woff')
+}
+@font-face {
+    font-family: QatarWorldCupAr;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../files/otf/Qatar2022Arabic-Medium.otf');
+    src: url('../files/woff2/Qatar2022Arabic-Medium.woff2') format('woff2'),
+    url('../files/woff/Qatar2022Arabic-Medium.woff') format('woff');
+}

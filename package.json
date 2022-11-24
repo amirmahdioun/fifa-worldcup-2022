@@ -9,14 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.10.14",
+    "@mui/material": "^5.10.14",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
+    "framer-motion": "^7.6.7",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-toastify": "^9.1.1",
     "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.189",
+    "cookies-next": "^2.1.1",
+    "lodash": "^4.17.21"
   }
 }
