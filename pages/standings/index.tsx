@@ -15,7 +15,7 @@ const Standings = ({standingData}: Props) => {
             <Container maxWidth={'xl'}>
                 {
                     standingData.map((group: StandingGroupI) => {
-                        return <Box my={'4rem'}>
+                        return <Box my={'4rem'} key={group.id}>
                             <Typography variant={'h4'}
                                         mb={'1rem'}
                                         textAlign={'center'}
