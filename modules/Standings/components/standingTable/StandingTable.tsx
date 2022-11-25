@@ -64,8 +64,7 @@ export default function StandingTable({rowData}: Props) {
                 </TableHead>
                 <TableBody>
                     {rowData.map((row: StandingTeamsI) => (
-                        <StyledTableRow key={row.id}
-                                        hover>
+                        <StyledTableRow key={row.id}>
                             <StyledTableCell component="th"
                                              scope="row"
                                              sx={{
