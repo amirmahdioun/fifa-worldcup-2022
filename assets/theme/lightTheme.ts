@@ -7,14 +7,21 @@ export const lightTheme = createTheme({
             main: '#9a1132'
         }
     },
-    typography:{
+    typography: {
         fontFamily: 'QatarWorldCup',
     },
     components: {
         MuiPaper: {
-            styleOverrides:{
+            styleOverrides: {
                 root: {
                     borderRadius: 0
+                }
+            }
+        },
+        MuiTableHead: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#9a1132'
                 }
             }
         }
