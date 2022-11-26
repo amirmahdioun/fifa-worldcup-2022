@@ -2,8 +2,6 @@ import {useRouter} from "next/router";
 import {Box, Container, Divider, Paper, Typography, useTheme} from "@mui/material";
 import Image from "next/image";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import StadiumsCatalog from "../../modules/Stadiums/stadiumsCatalog";
-import {stadiumImageData} from "../../data/stadiums/stadiumImage";
 import {StadiumInfo} from "../../data/stadiums/stadiumInfo";
 
 const StadiumDetail = () => {
@@ -26,16 +24,27 @@ const StadiumDetail = () => {
                      justifyContent={'center'}
                      alignItems={'center'}
                      my={'2rem'}>
+                    {/*<Box*/}
+                    {/*    component="img"*/}
+                    {/*    sx={{*/}
+                    {/*        borderRadius: '50px',*/}
+                    {/*        height: {xs: 200, sm: 400, md: 400, lg: 500},*/}
+                    {/*        width: {xs: 300, sm: 600, md: 800, lg: 1100},*/}
+                    {/*    }}*/}
+                    {/*    alt={`${stadiumData?.stadium_name} image`}*/}
+                    {/*    src={stadiumData?.image!!}*/}
+                    {/*/>*/}
                     <Box
-                        component="img"
                         sx={{
                             borderRadius: '50px',
+                            overflow: 'hidden',
+                            position: 'relative',
                             height: {xs: 200, sm: 400, md: 400, lg: 500},
                             width: {xs: 300, sm: 600, md: 800, lg: 1100},
                         }}
-                        alt={`${stadiumData?.stadium_name} image`}
-                        src={stadiumData?.image!!}
-                    />
+                    >
+                        <Image src={stadiumData?.image!!} alt={`${stadiumData?.stadium_name} image`} fill/>
+                    </Box>
                 </Box>
 
                 <Grid2 container
@@ -95,16 +104,27 @@ const StadiumDetail = () => {
                              top={0}
                              display={'flex'}
                              justifyContent={'center'}>
+                            {/*<Box*/}
+                            {/*    component="img"*/}
+                            {/*    sx={{*/}
+                            {/*        borderRadius: '50px',*/}
+                            {/*        height: {xs: 300, sm: 400, lg: 500},*/}
+                            {/*        width: {xs: 350, md: 300, lg: 400},*/}
+                            {/*    }}*/}
+                            {/*    alt={`${stadiumData?.stadium_name} image`}*/}
+                            {/*    src={stadiumData?.top_view!!}*/}
+                            {/*/>*/}
                             <Box
-                                component="img"
                                 sx={{
                                     borderRadius: '50px',
+                                    // overflow: 'hidden',
+                                    position: 'relative',
                                     height: {xs: 300, sm: 400, lg: 500},
                                     width: {xs: 350, md: 300, lg: 400},
                                 }}
-                                alt={`${stadiumData?.stadium_name} image`}
-                                src={stadiumData?.top_view!!}
-                            />
+                            >
+                                <Image src={stadiumData?.top_view!!} alt={`${stadiumData?.stadium_name} top-view-image`} fill/>
+                            </Box>
                         </Box>
                     </Grid2>
                 </Grid2>
