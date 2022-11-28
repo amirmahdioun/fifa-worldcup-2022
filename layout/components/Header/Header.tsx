@@ -13,14 +13,14 @@ import {
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import NextLink from "next/link";
-import MenuItems from "../../../interfaces/menuItems";
+import MenuItemsI from "../../../interfaces/menuItemsI";
 import React from "react";
 import ScrollToColor from "../../../components/ScrollToColor/ScrollToColor";
 
 
 type Props = {
     title: string,
-    menuItems: MenuItems[],
+    menuItems: MenuItemsI[],
     window?: () => Window;
 }
 
@@ -45,7 +45,7 @@ const Header = ({title, menuItems, window}: Props) => {
             </Typography>
             <Divider/>
             <List>
-                {menuItems.map((menuItem: MenuItems, index) => (
+                {menuItems.map((menuItem: MenuItemsI, index) => (
                     <ListItem key={index}
                               disablePadding>
                         <ListItemButton sx={{textAlign: 'center'}}>
@@ -85,7 +85,7 @@ const Header = ({title, menuItems, window}: Props) => {
                             </Typography>
 
                             <Box sx={{display: {xs: 'none', sm: 'block'}}}>
-                                {menuItems.map((menuItem: MenuItems, index) => (
+                                {menuItems.map((menuItem: MenuItemsI, index) => (
                                     <Button key={index}
                                             href={menuItem.link}
                                             component={NextLink}

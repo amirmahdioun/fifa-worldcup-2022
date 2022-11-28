@@ -1,6 +1,7 @@
 import Header from "./components/Header/Header";
 import {PropsWithChildren} from "react";
 import {Box} from "@mui/material";
+import {menuItems} from "../data/menu/menuItems";
 
 const MainLayout = ({children}: PropsWithChildren) => {
     return (
@@ -9,14 +10,7 @@ const MainLayout = ({children}: PropsWithChildren) => {
                  sx={{position: 'sticky', top: 0, transition: 'ease', zIndex: 999}}
             >
                 <Header title={'FiFa world cup 2022'}
-                        menuItems={[
-                            {menuTitle: 'Home', link: '/'},
-                            {menuTitle: 'live', link: '/matches/live'},
-                            {menuTitle: 'Groups', link: '/groups'},
-                            {menuTitle: 'standing', link: '/standings'},
-                            {menuTitle: 'matches', link: '/matches'},
-                            {menuTitle: 'stadiums', link: '/stadiums'}
-                        ]}/>
+                        menuItems={menuItems}/>
             </Box>
 
             <Box component={'main'}>
