@@ -53,7 +53,7 @@ const Matches = () => {
                            height={70}/>
                     <Typography textAlign={'center'}
                                 variant={'h5'}
-                                color={theme.palette.primary.main}>Qatar World Cup 2022 Live Stats</Typography>
+                                color={theme.palette.primary.main}>Qatar World Cup 2022 Matches</Typography>
                 </Box>
                 <Box my={'2rem'}>
                     <Typography variant={'h6'}
