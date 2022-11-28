@@ -4,27 +4,31 @@ import {GetServerSideProps, GetStaticProps} from "next";
 import {getCookie} from "cookies-next";
 import groupBy from 'lodash/groupBy'
 import Image from "next/image";
+import SeoTitle from "../../components/SeoTitle/SeoTitle";
 
 const GroupsPage = ({groups} : {groups: Object}) => {
     return (
-        <Paper style={{
-            backgroundImage: `url(/assets/images/loading-background.jpg)`,
-            backgroundSize: 'cover',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-            paddingTop: '2rem'
-        }}>
-            <Container maxWidth={'xl'}>
-                <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
-                    <Image src={'/assets/images/logo.png'} alt={'logo of world cup'} width={50} height={70} />
-                    <Typography variant={'h5'} color={'white'}>Qatar World Cup 2022 Groups</Typography>
-                </Box>
-                <GroupsList groups={groups} />
-            </Container>
-        </Paper>
-
+        <>
+            <SeoTitle siteName={"Fifa world cup"}
+                      title={`Groups`}/>
+            <Paper style={{
+                backgroundImage: `url(/assets/images/loading-background.jpg)`,
+                backgroundSize: 'cover',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '100vh',
+                paddingTop: '2rem'
+            }}>
+                <Container maxWidth={'xl'}>
+                    <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                        <Image src={'/assets/images/logo.png'} alt={'logo of world cup'} width={50} height={70} />
+                        <Typography variant={'h5'} color={'white'}>Qatar World Cup 2022 Groups</Typography>
+                    </Box>
+                    <GroupsList groups={groups} />
+                </Container>
+            </Paper>
+        </>
     );
 };
 

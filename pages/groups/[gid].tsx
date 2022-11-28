@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import UniqBy from 'lodash/uniqBy'
 import Image from "next/image";
 import LoadingOverlay from "../../components/LoadingOverlay/LoadingOverlay";
+import SeoTitle from "../../components/SeoTitle/SeoTitle";
 
 
 const GroupMatches = () => {
@@ -40,39 +41,43 @@ const GroupMatches = () => {
     }
 
     return (
-        <Paper
-            sx={{minHeight: '80vh', backgroundColor: '#f5f5f5', py: '3rem'}}
-            elevation={0}
-        >
-            <Container>
-                <Box display={'flex'}
-                     justifyContent={'center'}
-                     alignItems={'center'}>
-                    <Image src={'/assets/images/logo.png'}
-                           alt={'logo of world cup'}
-                           width={50}
-                           height={70}/>
-                    <Typography variant={'h5'}
-                                color={theme.palette.primary.main}>Qatar World Cup 2022 Groups</Typography>
-                </Box>
-                <Box my={'2rem'}>
-                    <Typography variant={'h6'}
-                                color={theme.palette.primary.main}>Group {groupId} Matches</Typography>
-                    <Grid2 container
-                           spacing={2}>
-                        {
-                            matches?.map((match: MatchI) => {
-                                return <Grid2 key={match.id}
-                                              xs={12}
-                                              md={6}>
-                                    <MatchCard data={match}/>
-                                </Grid2>
-                            })
-                        }
-                    </Grid2>
-                </Box>
-            </Container>
-        </Paper>
+        <>
+            <SeoTitle siteName={"Fifa world cup"}
+                      title={`Group ${groupId}`}/>
+            <Paper
+                sx={{minHeight: '80vh', backgroundColor: '#f5f5f5', py: '3rem'}}
+                elevation={0}
+            >
+                <Container>
+                    <Box display={'flex'}
+                         justifyContent={'center'}
+                         alignItems={'center'}>
+                        <Image src={'/assets/images/logo.png'}
+                               alt={'logo of world cup'}
+                               width={50}
+                               height={70}/>
+                        <Typography variant={'h5'}
+                                    color={theme.palette.primary.main}>Qatar World Cup 2022 Groups</Typography>
+                    </Box>
+                    <Box my={'2rem'}>
+                        <Typography variant={'h6'}
+                                    color={theme.palette.primary.main}>Group {groupId} Matches</Typography>
+                        <Grid2 container
+                               spacing={2}>
+                            {
+                                matches?.map((match: MatchI) => {
+                                    return <Grid2 key={match.id}
+                                                  xs={12}
+                                                  md={6}>
+                                        <MatchCard data={match}/>
+                                    </Grid2>
+                                })
+                            }
+                        </Grid2>
+                    </Box>
+                </Container>
+            </Paper>
+        </>
     );
 };
 

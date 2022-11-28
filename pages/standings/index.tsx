@@ -4,6 +4,7 @@ import {GetServerSideProps} from "next";
 import {getStandings} from "../../utils/api.util";
 import {StandingGroupI} from "../../interfaces/standingTable";
 import {useRouter} from "next/router";
+import SeoTitle from "../../components/SeoTitle/SeoTitle";
 
 type Props = {
     standingData: StandingGroupI[]
@@ -16,24 +17,28 @@ const Standings = ({standingData}: Props) => {
     }
 
     return (
-        <Paper elevation={0}>
-            <Container maxWidth={'xl'}>
-                {
-                    standingData.map((group: StandingGroupI) => {
-                        return <Box my={'4rem'}
-                                    key={group.id}>
-                            <Typography variant={'h4'}
-                                        mb={'1rem'}
-                                        sx={{cursor: 'pointer'}}
-                                        onClick={() => clickHandler(group.code)}
-                                        textAlign={'center'}
-                                        color={theme.palette.primary.main}>Group {group.code}</Typography>
-                            <StandingTable rowData={group.teams}/>
-                        </Box>
-                    })
-                }
-            </Container>
-        </Paper>
+        <>
+            <SeoTitle siteName={"Fifa world cup"}
+                      title={`Standings`}/>
+            <Paper elevation={0}>
+                <Container maxWidth={'xl'}>
+                    {
+                        standingData.map((group: StandingGroupI) => {
+                            return <Box my={'4rem'}
+                                        key={group.id}>
+                                <Typography variant={'h4'}
+                                            mb={'1rem'}
+                                            sx={{cursor: 'pointer'}}
+                                            onClick={() => clickHandler(group.code)}
+                                            textAlign={'center'}
+                                            color={theme.palette.primary.main}>Group {group.code}</Typography>
+                                <StandingTable rowData={group.teams}/>
+                            </Box>
+                        })
+                    }
+                </Container>
+            </Paper>
+        </>
     );
 };
 

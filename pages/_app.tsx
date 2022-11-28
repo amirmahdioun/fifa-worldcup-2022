@@ -10,6 +10,7 @@ import MainLayout from "../layout/MainLayout";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {GetServerSideProps} from "next";
+import SeoTitle from "../components/SeoTitle/SeoTitle";
 
 
 export default function App({Component, pageProps}: AppProps) {
@@ -93,6 +94,9 @@ export default function App({Component, pageProps}: AppProps) {
         <ThemeProvider theme={lightTheme}>
             <MainLayout>
                 <CssBaseline/>
+                <SeoTitle siteName={"Fifa world cup"}
+                          keywords={"fifa, fifa world cup 2022, qatar, doha, world cup 2022"}
+                          author={'Amir hossein Mahdioun'}/>
                 <Component {...pageProps} />
                 <ToastContainer
                     position="bottom-left"

@@ -23,6 +23,7 @@ import {useRouter} from "next/router";
 import {styled} from "@mui/material/styles";
 import TableCell, {tableCellClasses} from "@mui/material/TableCell";
 import React, {useEffect, useState} from "react";
+import SeoTitle from "../../../../components/SeoTitle/SeoTitle";
 
 
 interface TabPanelProps {
@@ -133,17 +134,22 @@ const LiveMatchContent = ({currentLive}: Props) => {
 
     if (!match) {
         return (
-            <Box display={'flex'}
-                 alignItems={'center'}
-                 justifyContent={'center'}
-                 minHeight={'70vh'}
-                 flexDirection={'column'}>
-                <Typography variant={'h4'}>There is no any live match now!</Typography>
-                <Button href={'/matches'}
-                        component={NextLink}
-                        variant={'contained'}
-                        sx={{mt: '2rem'}}>Back To Matches</Button>
-            </Box>
+            <>
+                <SeoTitle siteName={"Fifa world cup"}
+                          title={`Live`}/>
+                <Box display={'flex'}
+                     alignItems={'center'}
+                     justifyContent={'center'}
+                     textAlign={'center'}
+                     minHeight={'70vh'}
+                     flexDirection={'column'}>
+                    <Typography variant={'h4'}>There is no any live match now!</Typography>
+                    <Button href={'/matches'}
+                            component={NextLink}
+                            variant={'contained'}
+                            sx={{mt: '2rem'}}>Back To Matches</Button>
+                </Box>
+            </>
         )
     }
 
@@ -157,6 +163,8 @@ const LiveMatchContent = ({currentLive}: Props) => {
 
     return (
         <>
+            <SeoTitle siteName={"Fifa world cup"}
+                      title={`Live`}/>
             <Box display={'flex'}
                  justifyContent={'center'}
                  alignItems={'center'}>

@@ -1,12 +1,15 @@
-import {Typography} from "@mui/material";
+import {Box, Container, Paper, Typography} from "@mui/material";
 import HomeContent from "../modules/Home/HomeContent";
+import SeoTitle from "../components/SeoTitle/SeoTitle";
+import {StandingGroupI} from "../interfaces/standingTable";
+import StandingTable from "../modules/Standings/components/standingTable/StandingTable";
 
 export default function Home() {
   return (
-    <div>
+    <>
+        <SeoTitle siteName={"Fifa world cup"}
+                  title={`Home`}/>
         <HomeContent />
-        {/*<Typography variant={'h2'} fontFamily={'Poppins'} >This is Poppins</Typography>*/}
-        {/*<Typography variant={'h2'}>Qatar World Cup 2022 Ticket, Event and News  World champion</Typography>*/}
-    </div>
+    </>
   )
 }
