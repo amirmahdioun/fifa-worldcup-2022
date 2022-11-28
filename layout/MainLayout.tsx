@@ -11,6 +11,7 @@ const MainLayout = ({children}: PropsWithChildren) => {
                 <Header title={'FiFa world cup 2022'}
                         menuItems={[
                             {menuTitle: 'Home', link: '/'},
+                            {menuTitle: 'live', link: '/matches/live'},
                             {menuTitle: 'Groups', link: '/groups'},
                             {menuTitle: 'standing', link: '/standings'},
                             {menuTitle: 'matches', link: '/matches'},
