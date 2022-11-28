@@ -53,6 +53,7 @@ export default function StandingTable({rowData}: Props) {
                             left: '15px',
                             boxShadow: "5px 2px 5px grey"
                         }}>Team</StyledTableCell>
+                        <StyledTableCell align="center">MP</StyledTableCell>
                         <StyledTableCell align="center">W</StyledTableCell>
                         <StyledTableCell align="center">D</StyledTableCell>
                         <StyledTableCell align="center">L</StyledTableCell>
@@ -85,6 +86,7 @@ export default function StandingTable({rowData}: Props) {
                                              }}>
                                 {row.alternateName}
                             </StyledTableCell>
+                            <StyledTableCell align="center">{(row.matches.filter(match => match.status === 'completed')).length}</StyledTableCell>
                             <StyledTableCell align="center">{(row.points - row.draws) / 3}</StyledTableCell>
                             <StyledTableCell align="center">{row.draws}</StyledTableCell>
                             <StyledTableCell align="center">{row.losses}</StyledTableCell>
