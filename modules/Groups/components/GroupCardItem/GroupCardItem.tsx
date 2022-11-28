@@ -6,10 +6,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 
 const GroupCardItem = ({order, logoUrl, teamName} : GroupCardItemI) => {
     const theme = useTheme()
-    const xllarge = useMediaQuery(theme.breakpoints.up('xl'))
-    const large = useMediaQuery(theme.breakpoints.up("lg"));
-    const medium = useMediaQuery(theme.breakpoints.up("md"));
-    const small = useMediaQuery(theme.breakpoints.up("sm"));
+    const xlarge = useMediaQuery(theme.breakpoints.up('xl'))
 
     const imageLoader = ({ src, width, quality }: any) => {
         return `${src}?w=${width}&q=${quality || 75}`
@@ -40,7 +37,7 @@ const GroupCardItem = ({order, logoUrl, teamName} : GroupCardItemI) => {
                 </Grid2>
                 <Grid2
                     xs={8}
-                    md={8}><Typography variant={xllarge ? 'h6' : 'subtitle1'}>{teamName}</Typography></Grid2>
+                    md={8}><Typography variant={xlarge ? 'h6' : 'subtitle1'}>{teamName}</Typography></Grid2>
             </Grid2>
 
     );
