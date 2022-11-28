@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {StandingTeamsI} from "../../../../interfaces/standingTable";
+import Image from "next/image";
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -20,9 +21,7 @@ const StyledTableCell = styled(TableCell)(({theme}) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({theme}) => ({
-    // '&:nth-of-type(odd)': {
-    //     backgroundColor: theme.palette.action.hover,
-    // },
+    backgroundColor: '#eeeee4',
     '&:last-child td, &:last-child th': {
         border: 0,
     }
@@ -42,15 +41,10 @@ export default function StandingTable({rowData}: Props) {
             <Table sx={{minWidth: 700}}>
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell sx={{
-                            width: '2px',
-                            position: 'sticky',
-                            left: 0,
-                            boxShadow: "5px 2px 5px grey"
-                        }}></StyledTableCell>
+                        <StyledTableCell></StyledTableCell>
                         <StyledTableCell sx={{
                             position: 'sticky',
-                            left: '15px',
+                            left: '0',
                             boxShadow: "5px 2px 5px grey"
                         }}>Team</StyledTableCell>
                         <StyledTableCell align="center">MP</StyledTableCell>
@@ -67,24 +61,22 @@ export default function StandingTable({rowData}: Props) {
                     {rowData.map((row: StandingTeamsI) => (
                         <StyledTableRow key={row.id}>
                             <StyledTableCell component="th"
-                                             scope="row"
-                                             sx={{
-                                                 position: 'sticky',
-                                                 left: 0,
-                                                 boxShadow: "5px 2px 5px grey",
-                                                 backgroundColor: 'white'
-                                             }}>
+                                             scope="row">
                                 {row.position}
                             </StyledTableCell>
                             <StyledTableCell component="th"
                                              scope="row"
                                              sx={{
                                                  position: 'sticky',
-                                                 left: '15px',
+                                                 left: '0',
                                                  boxShadow: "5px 2px 5px grey",
-                                                 backgroundColor: 'white'
+                                                 backgroundColor: '#eeeee4'
                                              }}>
-                                {row.alternateName}
+                                <Image style={{verticalAlign: 'text-top', marginRight: '5px'}}
+                                       src={`/assets/images/standingLogos/${row.country}.png`}
+                                       alt={`${row.alternateName} logo`}
+                                       width={20}
+                                       height={15}/> {row.alternateName}
                             </StyledTableCell>
                             <StyledTableCell align="center">{(row.matches.filter(match => match.status === 'completed')).length}</StyledTableCell>
                             <StyledTableCell align="center">{(row.points - row.draws) / 3}</StyledTableCell>
