@@ -21,14 +21,13 @@ export default function App({Component, pageProps}: AppProps) {
 
     useEffect(() => {
         getToken().then(res => {
-            console.log('res is: ', res)
             if (res.status === 200) {
                 const loadingTimer = setTimeout(() => {
                     setLoading(false)
                 }, 3000)
                 return () => clearTimeout(loadingTimer)
             } else {
-                toast.error('There is an error to load the app!. Please refresh and try again',{
+                toast.error('There is an error to load the app!. Please refresh and try again', {
                     autoClose: 6000,
                 })
             }
@@ -55,6 +54,7 @@ export default function App({Component, pageProps}: AppProps) {
                         initial={{opacity: 1}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
+                        style={{textAlign: 'center'}}
                     >
                         <SplitText
                             initial={{y: '100%'}}
