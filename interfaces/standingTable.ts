@@ -1,4 +1,23 @@
+interface MatchI {
+    createdAt: string,
+    date : string,
+    homeTeam: {
+        country: string,
+        goals: number,
+        name: string,
+        penalties: number
+    }
+    id : string,
+    location : string,
+    stageName : string,
+    status : string,
+    updatedAt : string,
+    venue : string,
+    winner : string,
+}
+
 export interface StandingTeamsI {
+    matches: MatchI[];
     alternateName: string,
     country: string,
     wins: number,
