@@ -63,7 +63,7 @@ const Header = ({title, menuItems, window}: Props) => {
     return (
         <>
             <ScrollToColor>
-                <AppBar component="nav" >
+                <AppBar component="nav">
                     <Container maxWidth={'xl'}>
                         <Toolbar>
                             <IconButton
@@ -75,7 +75,7 @@ const Header = ({title, menuItems, window}: Props) => {
                                 <MenuIcon/>
                             </IconButton>
                             <Typography variant={'h6'}
-                                        sx={{flexGrow: 1}}>
+                                        sx={{flexGrow: 1, textAlign: {xs: 'end', sm: 'unset'}}}>
                                 <Link color={'white'}
                                       component={NextLink}
                                       href="/"
