@@ -1,12 +1,12 @@
 import {MatchI} from "../../interfaces/matches";
-import {Backdrop, Box, Container, Paper, Typography, useTheme} from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
+import {Box, Container, Paper, Typography, useTheme} from "@mui/material";
 import {useEffect, useState} from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import MatchCard from "../../modules/matches/components/matchCard/matchCard";
 import {useRouter} from "next/router";
 import UniqBy from 'lodash/uniqBy'
 import Image from "next/image";
+import LoadingOverlay from "../../components/LoadingOverlay/LoadingOverlay";
 
 
 const GroupMatches = () => {
@@ -35,12 +35,7 @@ const GroupMatches = () => {
 
     if (loading) {
         return (
-            <Backdrop
-                sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
-                open={true}
-            >
-                <CircularProgress color="inherit"/>
-            </Backdrop>
+            <LoadingOverlay/>
         )
     }
 

@@ -1,10 +1,10 @@
 import {MatchI} from "../../interfaces/matches";
-import {Backdrop, Box, Container, Paper, Typography, useTheme} from "@mui/material";
+import {Box, Container, Paper, Typography, useTheme} from "@mui/material";
 import MatchCard from "../../modules/matches/components/matchCard/matchCard";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import {useEffect, useState} from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
+import LoadingOverlay from "../../components/LoadingOverlay/LoadingOverlay";
 
 
 const Matches = () => {
@@ -34,12 +34,7 @@ const Matches = () => {
 
     if (loading) {
         return (
-            <Backdrop
-                sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
-                open={true}
-            >
-                <CircularProgress color="inherit"/>
-            </Backdrop>
+            <LoadingOverlay/>
         )
     }
 
