@@ -6,7 +6,11 @@ class MyDocument extends Document {
     render(): ReactElement {
         return (
             <Html lang={'en'}>
-                <Head/>
+                <Head>
+                    <link rel="shortcut icon"
+                          href="/assets/images/logo.png"
+                          type="image/x-icon" />
+                </Head>
                 <body>
                     <Main/>
                     <NextScript/>
