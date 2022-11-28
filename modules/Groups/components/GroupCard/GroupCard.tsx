@@ -1,6 +1,7 @@
 import {Box, Typography} from "@mui/material";
 import GroupCardItem from "../GroupCardItem/GroupCardItem";
 import {TeamI} from "../../../../interfaces/team";
+import {useRouter} from "next/router";
 
 type Props = {
     groupTitle?: string,
@@ -8,8 +9,13 @@ type Props = {
 }
 
 const GroupCard = ({groupTitle, groupData}: Props) => {
+    const router = useRouter()
+    const clickHandler = () => {
+        router.push(`/groups/${groupTitle}`)
+    }
     return (
-        <Box sx={{backgroundColor: 'white', borderRadius: '1rem', padding: '1rem'}}>
+        <Box sx={{backgroundColor: 'white', borderRadius: '1rem', padding: '1rem', cursor: 'pointer'}}
+             onClick={clickHandler}>
             <Typography variant={'subtitle2'}
                         textAlign={'center'}
                         mb={'1rem'}
