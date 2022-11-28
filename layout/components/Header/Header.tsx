@@ -67,11 +67,10 @@ const Header = ({title, menuItems, window}: Props) => {
                     <Container maxWidth={'xl'}>
                         <Toolbar>
                             <IconButton
-                                color="inherit"
                                 aria-label="open drawer"
                                 edge="start"
                                 onClick={handleDrawerToggle}
-                                sx={{mr: 2, display: {sm: 'none'}}}
+                                sx={{mr: 2, display: {sm: 'none'}, color: 'white'}}
                             >
                                 <MenuIcon/>
                             </IconButton>
