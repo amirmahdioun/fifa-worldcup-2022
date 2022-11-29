@@ -41,6 +41,7 @@
     "@types/lodash": "^4.14.189",
     "cookies-next": "^2.1.1",
     "cross-env": "^7.0.3",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "react-countdown": "^2.3.5"
   }
 }
