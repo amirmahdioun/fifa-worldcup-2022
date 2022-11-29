@@ -8,7 +8,7 @@ class MyDocument extends Document {
             <Html lang={'en'}>
                 <Head>
                     <link rel="shortcut icon"
-                          href="/assets/images/logo.png"
+                          href="/assets/images/icon.png"
                           type="image/x-icon" />
                 </Head>
                 <body>

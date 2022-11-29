@@ -3,15 +3,28 @@
 //   reactStrictMode: false,
 //   swcMinify: true,
 // }
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
+
+// module.exports = nextConfig
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true'
+// })
+//
+// module.exports = withBundleAnalyzer({
+//   reactStrictMode: false,
+//   swcMinify: true,
+//   env: {
+//     NEXT_PUBLIC_ENV: 'PRODUCTION', //your next configs goes here
+//   },
+// })
+
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: false,
 })
 
-module.exports = withBundleAnalyzer({
+module.exports = withPWA({
   reactStrictMode: false,
-  swcMinify: true,
-  env: {
-    NEXT_PUBLIC_ENV: 'PRODUCTION', //your next configs goes here
-  },
+  swcMinify: true
 })
-// module.exports = nextConfig
+
