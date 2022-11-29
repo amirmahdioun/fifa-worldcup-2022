@@ -29,4 +29,9 @@ export const getStandings = async () => {
     return await response.json()
 }
 
+export const getTodayMatches = async () => {
+    const response = await fetch('https://copa22.medeiro.tech/matches/today')
+    return await response.json()
+}
+
 
