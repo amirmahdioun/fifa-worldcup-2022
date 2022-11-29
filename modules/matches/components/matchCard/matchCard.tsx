@@ -6,6 +6,8 @@ import CircleIcon from '@mui/icons-material/Circle';
 import {MatchI} from "../../../../interfaces/matches";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import Countdown from "react-countdown";
+import {UTCTimeConverter} from "../../../../utils/UTCTimeConverter";
 
 type Props = {
     data: MatchI
@@ -88,6 +90,9 @@ const MatchCard = ({data}: Props) => {
                     }
                     {(data?.status === 'completed' || data?.status === 'in_progress') &&
                         <Typography variant={'subtitle2'}>{data?.homeTeam.goals} - {data?.awayTeam.goals}</Typography>}
+                    {
+                        data?.status === 'scheduled' && <Countdown date={UTCTimeConverter(new Date(data?.date))} />
+                    }
 
                 </Grid2>
                 <Grid2 xs={4}
