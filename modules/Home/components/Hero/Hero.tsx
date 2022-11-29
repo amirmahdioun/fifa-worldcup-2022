@@ -8,7 +8,7 @@ type Props = {
 
 const Hero = ({heroImageSrc, description}: Props) => {
     return (
-            <Box sx={{width: '100%', height: {xs: '510px', md: '600px',lg: '700px'}, position: 'relative', zIndex: -1 }}>
+            <Box sx={{width: '100%', height: {xs: '430px', sm: '510px', md: '600px',lg: '700px'}, position: 'relative', zIndex: -1 }}>
                 <Image src={heroImageSrc}
                        fill
                        style={{zIndex: -1}}
