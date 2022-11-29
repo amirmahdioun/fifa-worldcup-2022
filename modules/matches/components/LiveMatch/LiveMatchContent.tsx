@@ -103,7 +103,11 @@ const LiveMatchContent = ({currentLive}: Props) => {
         }
         if (response.status === 200) {
             const data = await response.json()
-            setMatch(data[0])
+            if(!currentLive){
+                setMatch(data)
+            }else{
+                setMatch(data[0])
+            }
         }
     }
 
@@ -237,7 +241,7 @@ const LiveMatchContent = ({currentLive}: Props) => {
                                 color: 'white',
                                 borderRadius: '20px'
                             }}>
-                    {match?.status === 'completed' ? 'Full time' : match?.time}
+                    {match?.status === 'completed' ? 'Full time' : match?.status === 'scheduled' ? 'Match not started yet!' : match?.time}
                 </Typography>
             </Box>
 
