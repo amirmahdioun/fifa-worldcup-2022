@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {Box, Button, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import PossessionChart from "../PossessionChart/PossessionChart";
+// import PossessionChart from "../PossessionChart/PossessionChart";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import {TimelineOppositeContent} from "@mui/lab";
@@ -262,8 +262,19 @@ const LiveMatchContent = ({currentLive}: Props) => {
                     <Box my={'1rem'}>
                         <Typography textAlign={'center'}
                                     variant={'h6'}
+                                    my={'1rem'}
+                                    color={theme.palette.primary.main}
                                     fontWeight={700}>Ball Possession</Typography>
-                        <PossessionChart chartData={chartData}/>
+                        {/*<PossessionChart chartData={chartData}/>*/}
+                        <Grid2 container
+                               spacing={3}>
+                            <Grid2 textAlign={'center'}
+                                   xs={4}>{Math.round(match?.homeTeam.statistics.ballPossession)} %</Grid2>
+                            <Grid2 textAlign={'center'}
+                                   xs={4}>Total</Grid2>
+                            <Grid2 textAlign={'center'}
+                                   xs={4}>{Math.round(match?.awayTeam.statistics.ballPossession)} %</Grid2>
+                        </Grid2>
                     </Box>
                     <Box my={'2rem'}>
                         <Typography textAlign={'center'}
