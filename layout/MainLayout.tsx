@@ -2,6 +2,7 @@ import Header from "./components/Header/Header";
 import {PropsWithChildren} from "react";
 import {Box} from "@mui/material";
 import {menuItems} from "../data/menu/menuItems";
+import Footer from "./components/Footer/Footer";
 
 const MainLayout = ({children}: PropsWithChildren) => {
     return (
@@ -15,6 +16,10 @@ const MainLayout = ({children}: PropsWithChildren) => {
 
             <Box component={'main'}>
                 {children}
+            </Box>
+
+            <Box component={'footer'}>
+                <Footer />
             </Box>
         </>
     );
