@@ -20,7 +20,7 @@
 
 const withPWA = require('next-pwa')({
   dest: 'public',
-  // mode: 'production',
+  mode: 'production',
   disable: false,
 })
 
