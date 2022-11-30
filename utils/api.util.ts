@@ -36,4 +36,12 @@ export const getTodayMatches = async (status: 'All' | 'in_progress' | 'scheduled
     return data.filter((item: MatchI) => item.status === status)
 }
 
+export const getAllMatches = async (date: string) => {
+    const response = await fetch('https://copa22.medeiro.tech/matches')
+    const data = await response.json()
+    return data.filter((match: MatchI) => {
+        return match.date.includes(date)
+    })
+}
+
 
