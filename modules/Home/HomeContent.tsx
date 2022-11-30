@@ -22,11 +22,20 @@ const HomeContent = () => {
         data: undefined
     })
 
-    useEffect(()=>{
-        getTodayMatches('scheduled').then(res => {
-            setTodayMatches({data: res.slice(0,2), loading: false})
-        })
-    },[])
+    useEffect(() => {
+        if(todayMatches.data){
+            const timer = setInterval(()=> {
+                getTodayMatches('scheduled').then(res => {
+                    setTodayMatches({data: res.slice(0,2), loading: false})
+                })
+            }, 1000 * 60 * 10)
+            return () => clearInterval(timer)
+        }else{
+            getTodayMatches('scheduled').then(res => {
+                setTodayMatches({data: res.slice(0,2), loading: false})
+            })
+        }
+    }, [todayMatches.data?.length])
 
 
 
@@ -117,7 +126,7 @@ const HomeContent = () => {
                     </Grid2>
                     <Grid2 xs={12} md={4} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                         <Typography color={theme.palette.primary.main} fontWeight={700} variant={'h6'}>Don't worry</Typography>
-                        <Typography color={theme.palette.primary.main} fontWeight={700} variant={'subtitle1'} textAlign={'center'}>You can check the missed matches' state every time.</Typography>
+                        <Typography color={theme.palette.primary.main} fontWeight={700} variant={'subtitle1'} textAlign={'center'}>You can check the missed matches' statistics every time.</Typography>
                         <Button variant={'contained'} component={NextLink} href={'/matches'} sx={{mt: '1rem'}}>Today's matches</Button>
                     </Grid2>
                 </Grid2>
