@@ -2,45 +2,63 @@ import {MatchI} from "../../interfaces/matches";
 import {Box, Container, Paper, Typography, useTheme} from "@mui/material";
 import MatchCard from "../../modules/matches/components/matchCard/matchCard";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import LoadingOverlay from "../../components/LoadingOverlay/LoadingOverlay";
 import SeoTitle from "../../components/SeoTitle/SeoTitle";
+import {getAllMatches} from "../../utils/api.util";
 
 
 const Matches = () => {
-    // const now = new Date().toISOString().slice(0, 10);
-    // const serverDate = '2022-11-27T16:00:00.000Z'
-    // const yesterday = new Date();
-    // yesterday.setDate(yesterday.getDate() - 1);
-    //
-    // console.log(yesterday.toISOString().slice(0, 10)); // 👉️ "Thu Jan 13 2022"
-    // console.log('now is: ', now)
-    // console.log('server date is: ', serverDate)
-    //
-    // console.log(serverDate.includes(now))
-    const [matches, setMatches] = useState<MatchI[]>()
+    const today = new Date().toISOString()
+
+    const tomorrow = new Date()
+    tomorrow.setDate(new Date().getDate() + 1) //Add ISOString method to convert to iso format
+
+    const yesterday = new Date()
+    yesterday.setDate(new Date().getDate() - 1)
+
+
+    const [todayMatches, setTodayMatches] = useState<MatchI[]>()
+    const [tomorrowMatches, setTomorrowMatches] = useState<MatchI[]>()
+    const [yesterdayMatches, setYesterdayMatches] = useState<MatchI[]>()
     const [loading, setLoading] = useState(true)
     const theme = useTheme()
+    const todayElementRef = useRef<null | HTMLDivElement>(null)
 
-    const getMatches = async () => {
-        const response = await fetch('https://copa22.medeiro.tech/matches/today')
-        const data = await response.json()
-        setMatches(data)
+    const getTodayMatches = async () => {
+        return await getAllMatches(today.split('T')[0])
+    }
+
+    const getTomorrowMatches = async () => {
+        return await getAllMatches(tomorrow.toISOString().split('T')[0])
+    }
+
+    const getYesterdayMatches = async () => {
+        return await getAllMatches(yesterday.toISOString().split('T')[0])
     }
 
     useEffect(() => {
-        getMatches().then(res => setLoading(false))
-    }, [])
+        if(!loading){
+            todayElementRef.current?.scrollIntoView({ behavior: "smooth", block: "center"})
+        }
+    },[loading])
 
     useEffect(() => {
-        if(matches){
+        if(todayMatches){
             const timer = setInterval(() => {
-                getMatches()
+                getTodayMatches().then(res => setTodayMatches(res))
             }, 1000 * 60 * 5)
             return () => clearInterval(timer)
+        }else{
+            Promise.all([getTodayMatches(), getTomorrowMatches(), getYesterdayMatches()]).then(res => {
+                setTodayMatches(res[0])
+                setTomorrowMatches(res[1])
+                setYesterdayMatches(res[2])
+                setLoading(false)
+            })
         }
-    },[matches])
+    },[todayMatches])
 
     if (loading) {
         return (
@@ -70,11 +88,43 @@ const Matches = () => {
                     </Box>
                     <Box my={'2rem'}>
                         <Typography variant={'h6'}
+                                    color={theme.palette.primary.main}>Yesterday Matches</Typography>
+                        <Grid2 container
+                               spacing={2}>
+                            {
+                                yesterdayMatches?.map((match: MatchI) => {
+                                    return <Grid2 key={match.id}
+                                                  xs={12}
+                                                  md={6}>
+                                        <MatchCard data={match}/>
+                                    </Grid2>
+                                })
+                            }
+                        </Grid2>
+                    </Box>
+                    <Box my={'2rem'} ref={todayElementRef}>
+                        <Typography variant={'h6'}
                                     color={theme.palette.primary.main}>Today Matches</Typography>
                         <Grid2 container
                                spacing={2}>
                             {
-                                matches?.map((match: MatchI) => {
+                                todayMatches?.map((match: MatchI) => {
+                                    return <Grid2 key={match.id}
+                                                  xs={12}
+                                                  md={6}>
+                                        <MatchCard data={match}/>
+                                    </Grid2>
+                                })
+                            }
+                        </Grid2>
+                    </Box>
+                    <Box my={'2rem'}>
+                        <Typography variant={'h6'}
+                                    color={theme.palette.primary.main}>Tomorrow Matches</Typography>
+                        <Grid2 container
+                               spacing={2}>
+                            {
+                                tomorrowMatches?.map((match: MatchI) => {
                                     return <Grid2 key={match.id}
                                                   xs={12}
                                                   md={6}>
