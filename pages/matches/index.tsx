@@ -33,6 +33,15 @@ const Matches = () => {
         getMatches().then(res => setLoading(false))
     }, [])
 
+    useEffect(() => {
+        if(matches){
+            const timer = setInterval(() => {
+                getMatches()
+            }, 1000 * 60 * 5)
+            return () => clearInterval(timer)
+        }
+    },[matches])
+
     if (loading) {
         return (
             <LoadingOverlay/>
