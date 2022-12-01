@@ -1075,6 +1075,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@g-loot/react-tournament-brackets@^1.0.22":
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/@g-loot/react-tournament-brackets/-/react-tournament-brackets-1.0.22.tgz#49237d33f5bf31c45f4be78f80edee4bd72810f1"
+  integrity sha512-ePhDeZs1QWRf+o+AVkg41O65NnqXrMjjcam8hbqO0/FzDLOpYKQLp9ddJTrEfAv6BczZCkf6WWympDSbCqwmhQ==
+
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.7.tgz#38aec044c6c828f6ed51d5d7ae3d9b9faf6dbb0f"
@@ -3895,11 +3900,6 @@ react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
-
-react-moment-countdown@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/react-moment-countdown/-/react-moment-countdown-0.4.2.tgz#4b3b3366c3ec807847e8c5266f99f100361b812d"
-  integrity sha512-Xa9KYLMB9mpnrqM98YU5oZwEhaCCLIaNns+Cxa8jXO9KF30Ans40t3u6A5n4d49ofbPh2cDFsenCgL3lIGcgDw==
 
 react-moment@^1.1.2:
   version "1.1.2"
