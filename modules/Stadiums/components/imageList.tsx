@@ -3,7 +3,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import {StadiumImageDataI} from "../../../interfaces/stadiumImageData";
 import {ImageListItemBar, useMediaQuery, useTheme} from "@mui/material";
-
+import InfoIcon from '@mui/icons-material/Info';
 import Link from "next/link";
 
 
@@ -46,6 +46,8 @@ export default function ImageListComponent({imageList}: Props) {
                         <ImageListItemBar
                             style={{backgroundColor:  'rgb(154 17 50 / 60%)'}}
                             title={item.title}
+                            subtitle={'more info'}
+                            actionIcon={<InfoIcon sx={{color: 'white'}} />}
                         />
                     </Link>
                 </ImageListItem>
