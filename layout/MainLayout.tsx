@@ -14,7 +14,7 @@ const MainLayout = ({children}: PropsWithChildren) => {
                         menuItems={menuItems}/>
             </Box>
 
-            <Box component={'main'}>
+            <Box component={'main'} minHeight={'76.5vh'}>
                 {children}
             </Box>
 
