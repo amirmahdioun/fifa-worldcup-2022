@@ -79,7 +79,7 @@ const PlayoffChart = () => {
                                     minute: '2-digit',
                                     timeZoneName: 'longGeneric'
                                 }),
-                                teams: [{name: match.homeTeam.name}, {name: match.awayTeam.name}],
+                                teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
                             }
                 })
                 if(index === 0){
