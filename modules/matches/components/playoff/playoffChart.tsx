@@ -52,6 +52,7 @@ const CustomSeed = ({seed, breakpoint}: IRenderSeedProps) => {
                         {seed.teams[1]?.name || 'TBD'}
                     </SeedTeam>
                 </div>
+                <div>{seed.date}</div>
             </SeedItem>
         </Seed>
     );
