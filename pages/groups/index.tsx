@@ -1,12 +1,14 @@
 import {Box, Container, Paper, Typography} from "@mui/material";
 import GroupsList from "../../modules/Groups/GroupsList";
-import {GetServerSideProps, GetStaticProps} from "next";
-import {getCookie} from "cookies-next";
 import groupBy from 'lodash/groupBy'
 import Image from "next/image";
 import SeoTitle from "../../components/SeoTitle/SeoTitle";
+import {GroupsData} from "../../data/groups/groupsData";
 
-const GroupsPage = ({groups} : {groups: Object}) => {
+const GroupsPage = () => {
+    const groups = groupBy(GroupsData, (team) => {
+        return team.groups
+    })
     return (
         <>
             <SeoTitle siteName={"Fifa world cup"}
@@ -31,44 +33,5 @@ const GroupsPage = ({groups} : {groups: Object}) => {
         </>
     );
 };
-
-export const getServerSideProps:GetServerSideProps = async ({req, res}) => {
-    const token = getCookie('token', {req, res})
-    const response = await fetch('http://api.cup2022.ir/api/v1/team', {
-        headers:{
-            'Authorization' : `Bearer ${token}`,
-            'Content-Type' : 'application/json'
-        }
-    })
-    const {data} = await response.json()
-    const groupedTeams = groupBy(data, (team) => {
-        return team.groups
-    })
-    return {
-        props: {
-            groups: groupedTeams
-        }
-    }
-}
-
-// export const getStaticProps:GetStaticProps = async () => {
-//     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdhOGQ4YWZkOWFhYzIyNjc2ZWY1MmUiLCJpYXQiOjE2NjkyNDE3MjQsImV4cCI6MTY2OTMyODEyNH0.xuTYg3WTD-YZZiLHpUO3_JJlHWHJCt8PpPFenwoj078'
-//     console.log('token in static props: ', token)
-//     const response = await fetch('http://api.cup2022.ir/api/v1/team', {
-//         headers:{
-//             'Authorization' : `Bearer ${token}`,
-//             'Content-Type' : 'application/json'
-//         }
-//     })
-//     const {data} = await response.json()
-//     const groupedTeams = groupBy(data, (team) => {
-//         return team.groups
-//     })
-//     return {
-//         props: {
-//             groups: groupedTeams
-//         }
-//     }
-// }
 
 export default GroupsPage;
