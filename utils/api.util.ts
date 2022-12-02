@@ -44,4 +44,12 @@ export const getAllMatches = async (date: string) => {
     })
 }
 
+export const getMatchesByStage = async (mode: 'First stage' | 'Round of 16' | 'Quarter-final' | 'Semi-final' | 'Final') => {
+    const response = await fetch('https://copa22.medeiro.tech/matches')
+    const data = await response.json()
+    return data.filter((match: MatchI) => {
+        return match.stageName === mode
+    })
+}
+
 
