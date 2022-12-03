@@ -1,7 +1,8 @@
 import Image from "next/image";
 import {Box, Button, Paper, Tab, Tabs, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
-// import PossessionChart from "../PossessionChart/PossessionChart";
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import StyleIcon from '@mui/icons-material/Style';
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import {TimelineOppositeContent} from "@mui/lab";
@@ -188,6 +189,7 @@ const LiveMatchContent = ({currentLive}: Props) => {
                     <Grid2 xs={5}
                            md={4}
                            display={'flex'}
+                           flexWrap={'wrap'}
                            alignItems={'center'}>
                         <Typography variant={small ? 'subtitle1' : medium ? 'h6' : 'subtitle2'}
                                     fontWeight={700}>{match?.homeTeam.name!!.toUpperCase()}</Typography>
@@ -217,6 +219,7 @@ const LiveMatchContent = ({currentLive}: Props) => {
                     <Grid2 xs={4}
                            display={'flex'}
                            justifyContent={'flex-end'}
+                           flexWrap={'wrap'}
                            alignItems={'center'}>
                         <Box sx={{width: {xs: 40, md: 90}, height: {xs: 25, md: 50}, position: 'relative'}}>
                             <Image style={{verticalAlign: 'text-top', marginRight: '2rem'}}
@@ -230,6 +233,109 @@ const LiveMatchContent = ({currentLive}: Props) => {
                     </Grid2>
                 </Grid2>
             </Box>
+
+            {
+                (match?.homeTeam.goals !== 0 || match?.awayTeam.goals !== 0) && (
+                    <Box mb={'3rem'}>
+                        <Grid2 container
+                               spacing={2}
+                               alignItems={'center'}>
+                            <Grid2 xs={5}
+                                   alignItems={'center'}>
+                                <Box display={'flex'} flexDirection={'column'}>
+                                    {
+                                        match?.homeTeam.events && match?.homeTeam.events.filter(event => {
+                                            return event.typeOfEvent === 'goal'
+                                        }).map(goal => {
+                                            return (
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                    <Typography variant={'caption'}>{goal.player} ( {goal.minute} )</Typography>
+                                                </Box>
+                                            )
+                                        })
+                                    }
+                                </Box>
+                            </Grid2>
+                            <Grid2 xs={2}
+                                   display={'flex'}
+                                   justifyContent={'center'}>
+                                <SportsSoccerIcon sx={{mr: '5px'}}/>
+                            </Grid2>
+                            <Grid2 xs={5}
+                                   display={'flex'}
+                                   justifyContent={'flex-end'}
+                                   alignItems={'center'}>
+                                <Box display={'flex'} flexDirection={'column'}>
+                                    {
+                                        match?.awayTeam.events && match?.awayTeam.events.filter(event => {
+                                            return event.typeOfEvent === 'goal'
+                                        }).map(goal => {
+                                            return (
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                    <Typography variant={'caption'}>{goal.player} ( {goal.minute} )</Typography>
+                                                </Box>
+                                            )
+                                        })
+                                    }
+                                </Box>
+                            </Grid2>
+                        </Grid2>
+                    </Box>
+                )
+            }
+
+            {
+                (match?.homeTeam.events.find(event => event.typeOfEvent === 'booking') ||match?.awayTeam.events.find(event => event.typeOfEvent === 'booking')) && (
+                    <Box mb={'3rem'}>
+                        <Grid2 container
+                               spacing={2}
+                               alignItems={'center'}>
+                            <Grid2 xs={5}
+                                   alignItems={'center'}>
+                                <Box display={'flex'} flexDirection={'column'}>
+                                    {
+                                        match?.homeTeam.events && match?.homeTeam.events.filter(event => {
+                                            return event.typeOfEvent === 'booking'
+                                        }).map(booking => {
+                                            return (
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                    <Box width={'15px'} height={'20px'} borderRadius={'2px'} mr={'5px'} sx={{backgroundColor: booking.extraInfo.card === 'yellow' ? '#fed130' : 'red'}} />
+                                                    <Typography variant={'caption'}>{booking.player} ( {booking.minute} )</Typography>
+                                                </Box>
+                                            )
+                                        })
+                                    }
+                                </Box>
+                            </Grid2>
+                            <Grid2 xs={2}
+                                   display={'flex'}
+                                   justifyContent={'center'}>
+                                <StyleIcon sx={{mr: '5px'}}/>
+                            </Grid2>
+                            <Grid2 xs={5}
+                                   display={'flex'}
+                                   justifyContent={'flex-end'}
+                                   alignItems={'center'}>
+                                <Box display={'flex'} flexDirection={'column'}>
+                                    {
+                                        match?.awayTeam.events && match?.awayTeam.events.filter(event => {
+                                            return event.typeOfEvent === 'booking'
+                                        }).map(booking => {
+                                            return (
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                    <Box width={'15px'} height={'20px'} borderRadius={'2px'} mr={'5px'} sx={{backgroundColor: booking.extraInfo.card === 'yellow' ? '#fed130' : 'red'}} />
+                                                    <Typography variant={'caption'}>{booking.player} ( {booking.minute} )</Typography>
+                                                </Box>
+                                            )
+                                        })
+                                    }
+                                </Box>
+                            </Grid2>
+                        </Grid2>
+                    </Box>
+                )
+            }
+
 
             <Box display={'flex'}
                  justifyContent={'center'}
