@@ -107,7 +107,11 @@ const LiveMatchContent = ({currentLive}: Props) => {
             if (!currentLive) {
                 setMatch(data)
             } else {
-                setMatch(data[0])
+                if(typeof data === 'object'){
+                    setMatch(data)
+                }else{
+                    setMatch(data[0])
+                }
             }
         }
     }
