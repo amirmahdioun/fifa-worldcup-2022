@@ -1,34 +1,108 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to FIFA World Cup 2022!
 
-## Getting Started
 
-First, run the development server:
+This project is built for more information about Qatar world cup 2022 which is held in Qatar and hosted on wcup2022.tk
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![Qatar world cup 2022](./public/assets/images/worldcupball.jpg)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stadiums
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can find many useful information about all stadiums for world cup 2022
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Stadiums are:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. [Ahmad Bin Ali](https://wcup2022.tk/stadiums/4)
 
-## Learn More
+2. [Al Bayt](https://wcup2022.tk/stadiums/1)
+
+3. [Lusail](https://wcup2022.tk/stadiums/5)
+
+4. [Khalifa international](https://wcup2022.tk/stadiums/3)
+
+5. [974](https://wcup2022.tk/stadiums/6)
+
+6. [Al Thumama](https://wcup2022.tk/stadiums/2)
+
+7. [Al Janoub](https://wcup2022.tk/stadiums/8)
+
+8. [Education city](https://wcup2022.tk/stadiums/7)
+
+## Live Stats
+
+Watch online information about the match is holding at the moment
+
+This information is about team’s possession, passes, attacks, fouls, offside, team tactics, substitutions, cards, referee data and so on.
+
+## Matches
+
+Today's matches?
+
+You can find more information about today, yesterday and tomorrow matches in the match page
+
+If you click on the matches that are completed, you'll give more data about that match
+
+### About
+
+This project is written on NextJs framework.
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-  [Next.js Documentation](https://nextjs.org/docs)  - learn about Next.js features and API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-  [Learn Next.js](https://nextjs.org/learn)  - an interactive Next.js tutorial.
 
-## Deploy on Vercel
+Also I've used material ui for design. To get start and find its documentation please take a look at [HERE](https://mui.com/material-ui/getting-started/overview/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+First of things you should clone or download the project on your local machine.
+
+Then run:
+````
+npm install
+
+# or
+
+yarn install 
+````
+
+It's depend on you to use them, but I prefer the yarn.
+
+To start the project run:
+
+````
+yarn dev
+````
+wait to run the development server, then open http://localhost:3000 (or other port which the dev server is on it)
+
+## Folder structure
+
+- Assets
+
+-- fonts (All fonts are here , seperated by their type. Also there is a css folder that contains css files of fonts
+
+-- theme (You find theme files in this folder, at this moment we only have one theme)
+
+- Components (every general component should be in this folder)
+
+- data (All static data will be here, at this moment we have stadiums, group data and also header menu data)
+
+- interfaces (you can find general interfaces for general components in this folder)
+
+- layout (All layout files are here, we only have one layout at this time)
+
+- modules (every section developed as special module with its components, interfaces etc.)
+
+- pages (If you familiar with NextJs, you know its routing is folder based. So all pages in this folder)
+
+-- api (NextJs api routes are in this folder)
+
+- public (All public files will be there to access them directly on server)
+
+- utils (You can find all custom functions in the util folder)
+
+### Contact
+
+Please feel free to give me your feedbacks, suggestions or any bug resports
+
+My email: amir.mahdioun@gmail.com
