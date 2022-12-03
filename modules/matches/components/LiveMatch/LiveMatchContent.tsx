@@ -162,13 +162,6 @@ const LiveMatchContent = ({currentLive}: Props) => {
         )
     }
 
-    const chartData = [{
-        name: match?.homeTeam.name,
-        data: [Math.round(match?.homeTeam.statistics.ballPossession!!)],
-    }, {
-        name: match?.awayTeam.name,
-        data: [Math.round(match?.awayTeam.statistics.ballPossession!!)],
-    }]
 
     return (
         <>
@@ -238,6 +231,20 @@ const LiveMatchContent = ({currentLive}: Props) => {
                 </Grid2>
             </Box>
 
+            <Box display={'flex'}
+                 justifyContent={'center'}
+                 alignItems={'center'}>
+                <Typography variant={'subtitle1'}
+                            sx={{
+                                backgroundColor: 'rgb(85, 0, 101)',
+                                padding: '3px 15px',
+                                color: 'white',
+                                borderRadius: '20px'
+                            }}>
+                    {match?.status === 'completed' ? 'Full time' : match?.status === 'scheduled' ? 'Match not started yet!' : match?.time}
+                </Typography>
+            </Box>
+
             {
                 (match?.homeTeam.goals !== 0 || match?.awayTeam.goals !== 0) && (
                     <Box mb={'3rem'}>
@@ -250,9 +257,9 @@ const LiveMatchContent = ({currentLive}: Props) => {
                                     {
                                         match?.homeTeam.events && match?.homeTeam.events.filter(event => {
                                             return event.typeOfEvent === 'goal'
-                                        }).map(goal => {
+                                        }).map((goal, index) => {
                                             return (
-                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'} key={index}>
                                                     <Typography variant={'caption'}>{goal.player} ( {goal.minute} )</Typography>
                                                 </Box>
                                             )
@@ -273,9 +280,9 @@ const LiveMatchContent = ({currentLive}: Props) => {
                                     {
                                         match?.awayTeam.events && match?.awayTeam.events.filter(event => {
                                             return event.typeOfEvent === 'goal'
-                                        }).map(goal => {
+                                        }).map((goal, index) => {
                                             return (
-                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'} key={index}>
                                                     <Typography variant={'caption'}>{goal.player} ( {goal.minute} )</Typography>
                                                 </Box>
                                             )
@@ -300,9 +307,9 @@ const LiveMatchContent = ({currentLive}: Props) => {
                                     {
                                         match?.homeTeam.events && match?.homeTeam.events.filter(event => {
                                             return event.typeOfEvent === 'booking'
-                                        }).map(booking => {
+                                        }).map((booking, index) => {
                                             return (
-                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'} key={index}>
                                                     <Box width={'15px'} height={'20px'} borderRadius={'2px'} mr={'5px'} sx={{backgroundColor: booking.extraInfo.card === 'yellow' ? '#fed130' : 'red'}} />
                                                     <Typography variant={'caption'}>{booking.player} ( {booking.minute} )</Typography>
                                                 </Box>
@@ -324,9 +331,9 @@ const LiveMatchContent = ({currentLive}: Props) => {
                                     {
                                         match?.awayTeam.events && match?.awayTeam.events.filter(event => {
                                             return event.typeOfEvent === 'booking'
-                                        }).map(booking => {
+                                        }).map((booking, index) => {
                                             return (
-                                                <Box display={'flex'} alignItems={'center'} my={'5px'}>
+                                                <Box display={'flex'} alignItems={'center'} my={'5px'} key={index}>
                                                     <Box width={'15px'} height={'20px'} borderRadius={'2px'} mr={'5px'} sx={{backgroundColor: booking.extraInfo.card === 'yellow' ? '#fed130' : 'red'}} />
                                                     <Typography variant={'caption'}>{booking.player} ( {booking.minute} )</Typography>
                                                 </Box>
@@ -340,20 +347,6 @@ const LiveMatchContent = ({currentLive}: Props) => {
                 )
             }
 
-
-            <Box display={'flex'}
-                 justifyContent={'center'}
-                 alignItems={'center'}>
-                <Typography variant={'subtitle1'}
-                            sx={{
-                                backgroundColor: 'rgb(85, 0, 101)',
-                                padding: '3px 15px',
-                                color: 'white',
-                                borderRadius: '20px'
-                            }}>
-                    {match?.status === 'completed' ? 'Full time' : match?.status === 'scheduled' ? 'Match not started yet!' : match?.time}
-                </Typography>
-            </Box>
 
             <Box my={'2rem'}>
                 <Tabs value={tab}
