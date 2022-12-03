@@ -39,6 +39,17 @@ interface StaticsI {
     tactics: string,
 }
 
+interface EventI {
+    typeOfEvent: string,
+    player: string,
+    extraInfo: {
+        playerIn?: string,
+        playerOff?: string,
+        card?: 'yellow' | 'red'
+    },
+    minute: string
+}
+
 interface TeamI {
     country: string,
     goals: number,
@@ -46,7 +57,8 @@ interface TeamI {
     penalties: number,
     statistics: StaticsI,
     substitutions: SubstitutionsI[],
-    startingPlayers: PlayersI[]
+    startingPlayers: PlayersI[],
+    events: EventI[]
 }
 
 export interface MatchI {
