@@ -1,7 +1,7 @@
 # Welcome to FIFA World Cup 2022!
 
 
-This project is built for more information about Qatar world cup 2022 which is held in Qatar and hosted on wcup2022.tk
+This project is built for more information about Qatar world cup 2022 which is held in Qatar and hosted on [wcup2022.tk](https://wcup2022.tk)
 
 ![Qatar world cup 2022](./public/assets/images/worldcupball.jpg)
 
@@ -79,7 +79,7 @@ wait to run the development server, then open http://localhost:3000 (or other po
 
 - Assets
 
--- fonts (All fonts are here , seperated by their type. Also there is a css folder that contains css files of fonts
+-- fonts (All fonts are here , separated by their type. Also there is a css folder that contains css files of fonts
 
 -- theme (You find theme files in this folder, at this moment we only have one theme)
 
@@ -103,6 +103,6 @@ wait to run the development server, then open http://localhost:3000 (or other po
 
 ### Contact
 
-Please feel free to give me your feedbacks, suggestions or any bug resports
+Please feel free to give me your feedbacks, suggestions or any bug reports
 
 My email: amir.mahdioun@gmail.com
