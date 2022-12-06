@@ -86,35 +86,42 @@ const Matches = () => {
                                     variant={'h5'}
                                     color={theme.palette.primary.main}>Qatar World Cup 2022 Matches</Typography>
                     </Box>
-                    <Box my={'2rem'}>
-                        <Typography variant={'h6'}
-                                    color={theme.palette.primary.main}>Yesterday Matches</Typography>
-                        <Grid2 container
-                               spacing={2}>
-                            {
-                                yesterdayMatches?.map((match: MatchI) => {
-                                    return <Grid2 key={match.id}
-                                                  xs={12}
-                                                  md={6}>
-                                        <MatchCard data={match}/>
-                                    </Grid2>
-                                })
-                            }
-                        </Grid2>
-                    </Box>
+                    {
+                        yesterdayMatches && (
+                            <Box my={'2rem'}>
+                                <Typography variant={'h6'}
+                                            color={theme.palette.primary.main}>Yesterday Matches</Typography>
+                                <Grid2 container
+                                       spacing={2}>
+                                    {
+                                        yesterdayMatches?.map((match: MatchI) => {
+                                            return <Grid2 key={match.id}
+                                                          xs={12}
+                                                          md={6}>
+                                                <MatchCard data={match}/>
+                                            </Grid2>
+                                        })
+                                    }
+                                </Grid2>
+                            </Box>
+                        )
+                    }
+
                     <Box my={'2rem'} ref={todayElementRef}>
                         <Typography variant={'h6'}
                                     color={theme.palette.primary.main}>Today Matches</Typography>
                         <Grid2 container
                                spacing={2}>
                             {
-                                todayMatches?.map((match: MatchI) => {
+                                todayMatches?.length ? todayMatches?.map((match: MatchI) => {
                                     return <Grid2 key={match.id}
                                                   xs={12}
                                                   md={6}>
                                         <MatchCard data={match}/>
                                     </Grid2>
-                                })
+                                }) : (
+                                    <Typography variant={'h6'}>Today was a weekend for world cup!</Typography>
+                                )
                             }
                         </Grid2>
                     </Box>
@@ -124,13 +131,15 @@ const Matches = () => {
                         <Grid2 container
                                spacing={2}>
                             {
-                                tomorrowMatches?.map((match: MatchI) => {
+                                tomorrowMatches?.length ? tomorrowMatches?.map((match: MatchI) => {
                                     return <Grid2 key={match.id}
                                                   xs={12}
                                                   md={6}>
                                         <MatchCard data={match}/>
                                     </Grid2>
-                                })
+                                }) : (
+                                    <Typography variant={'h6'}>Tomorrow is a good time to rest!</Typography>
+                                )
                             }
                         </Grid2>
                     </Box>
