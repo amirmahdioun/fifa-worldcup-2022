@@ -1,5 +1,4 @@
-import {useTheme} from "@mui/material";
-import {getMatchesByStage} from "../../../../utils/api.util";
+import {Typography, useTheme} from "@mui/material";
 import {MatchI} from "../../../../interfaces/matches";
 import React, {useEffect, useState} from "react";
 import {
@@ -58,6 +57,11 @@ const CustomSeed = ({seed, breakpoint}: IRenderSeedProps) => {
     );
 };
 
+type Stages = {
+    name: string,
+    matches: MatchI[]
+}
+
 const PlayoffChart = () => {
     const theme = useTheme()
     const [roundMatches, setRoundMatches] = useState<ISeedProps[]>([])
@@ -66,8 +70,130 @@ const PlayoffChart = () => {
     const [finalMatch, setFinalMatch] = useState<ISeedProps[]>([])
     const [loading, setLoading] = useState<boolean>(true)
 
+    const getMatches = async () => {
+        const response = await fetch('https://copa22.medeiro.tech/brackets')
+        return await response.json()
+    }
+
     useEffect(() => {
-        Promise.all([getMatchesByStage('Round of 16'),getMatchesByStage('Quarter-final'),getMatchesByStage('Semi-final'),getMatchesByStage('Final')]).then(res => {
+        getMatches().then((res: Stages[]) => {
+            // console.log('res is : ', res)
+            const roundMatches = [res[0].matches.slice(0,4), res[0].matches.slice(4, res[0].matches.length)]
+            for (let i = 0; i < roundMatches.length; i++) {
+                roundMatches[i].slice(0,2).map(match => {
+                    const data = {
+                        id: match.id,
+                        date: new Date(match.date).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            day: '2-digit',
+                            month: 'short',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            timeZoneName: 'longGeneric'
+                        }),
+                        status: match.status,
+                        winner: match.status === 'completed' ? match.winner : false,
+                        teams: [{name: match.homeTeam.name, flag: match.homeTeam.country, score: match.homeTeam.goals,penalty: match.homeTeam.penalties}, {name: match.awayTeam.name, flag: match.awayTeam.country, score: match.awayTeam.goals, penalty: match.awayTeam.penalties}],
+                    }
+                    setRoundMatches(prevState => {
+                        return [...prevState, data]
+                    })
+                })
+            }
+            for (let i = 0; i < roundMatches.length; i++) {
+                roundMatches[i].slice(2,5).map(match => {
+                    const data = {
+                        id: match.id,
+                        date: new Date(match.date).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            day: '2-digit',
+                            month: 'short',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            timeZoneName: 'longGeneric'
+                        }),
+                        status: match.status,
+                        winner: match.status === 'completed' ? match.winner : false,
+                        teams: [{name: match.homeTeam.name, flag: match.homeTeam.country, score: match.homeTeam.goals,penalty: match.homeTeam.penalties}, {name: match.awayTeam.name, flag: match.awayTeam.country, score: match.awayTeam.goals,penalty: match.awayTeam.penalties}],
+                    }
+                    setRoundMatches(prevState => {
+                        return [...prevState, data]
+                    })
+                })
+            }
+            // const roundTeams1 = roundMatches[0].slice(0,2).map(match => {
+            //     const data = {
+            //         id: match.id,
+            //         date: new Date(match.date).toLocaleDateString('en-US', {
+            //             weekday: 'short',
+            //             day: '2-digit',
+            //             month: 'short',
+            //             hour: 'numeric',
+            //             minute: '2-digit',
+            //             timeZoneName: 'longGeneric'
+            //         }),
+            //         teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
+            //     }
+            //     setRoundMatches(prevState => {
+            //         return [...prevState, data]
+            //     })
+            // })
+            //
+            // const roundTeams2 = roundMatches[1].slice(0,2).map(match => {
+            //     const data = {
+            //         id: match.id,
+            //         date: new Date(match.date).toLocaleDateString('en-US', {
+            //             weekday: 'short',
+            //             day: '2-digit',
+            //             month: 'short',
+            //             hour: 'numeric',
+            //             minute: '2-digit',
+            //             timeZoneName: 'longGeneric'
+            //         }),
+            //         teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
+            //     }
+            //     setRoundMatches(prevState => {
+            //         return [...prevState, data]
+            //     })
+            // })
+
+            // const roundTeams3 = roundMatches[0].slice(2,5).map(match => {
+            //     const data = {
+            //         id: match.id,
+            //         date: new Date(match.date).toLocaleDateString('en-US', {
+            //             weekday: 'short',
+            //             day: '2-digit',
+            //             month: 'short',
+            //             hour: 'numeric',
+            //             minute: '2-digit',
+            //             timeZoneName: 'longGeneric'
+            //         }),
+            //         teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
+            //     }
+            //     setRoundMatches(prevState => {
+            //         return [...prevState, data]
+            //     })
+            // })
+
+            // const roundTeams4 = roundMatches[1].slice(2,5).map(match => {
+            //     const data = {
+            //         id: match.id,
+            //         date: new Date(match.date).toLocaleDateString('en-US', {
+            //             weekday: 'short',
+            //             day: '2-digit',
+            //             month: 'short',
+            //             hour: 'numeric',
+            //             minute: '2-digit',
+            //             timeZoneName: 'longGeneric'
+            //         }),
+            //         teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
+            //     }
+            //     setRoundMatches(prevState => {
+            //         return [...prevState, data]
+            //     })
+            // })
+
+
             res.map((stage,index) => {
                 const teams = stage.map((match: MatchI): ISeedProps => {
                             return {
@@ -83,18 +209,47 @@ const PlayoffChart = () => {
                                 teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
                             }
                 })
-                if(index === 0){
-                    setRoundMatches([...teams])
-                }else if(index === 1){
+                // if(index === 0){
+                //     setRoundMatches([...teams])
+                // }else
+                if(index === 1){
                     setQuarterMatches([...teams])
                 }else if(index === 2){
                     setSemiFinalMatches([...teams])
-                }else {
+                }else if(index === 3) {
                     setFinalMatch([...teams])
                 }
                 setLoading(false)
             })
         })
+        // Promise.all([getMatchesByStage('Round of 16'),getMatchesByStage('Quarter-final'),getMatchesByStage('Semi-final'),getMatchesByStage('Final')]).then(res => {
+        //     res.map((stage,index) => {
+        //         const teams = stage.map((match: MatchI): ISeedProps => {
+        //                     return {
+        //                         id: match.id,
+        //                         date: new Date(match.date).toLocaleDateString('en-US', {
+        //                             weekday: 'short',
+        //                             day: '2-digit',
+        //                             month: 'short',
+        //                             hour: 'numeric',
+        //                             minute: '2-digit',
+        //                             timeZoneName: 'longGeneric'
+        //                         }),
+        //                         teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
+        //                     }
+        //         })
+        //         if(index === 0){
+        //             setRoundMatches([...teams])
+        //         }else if(index === 1){
+        //             setQuarterMatches([...teams])
+        //         }else if(index === 2){
+        //             setSemiFinalMatches([...teams])
+        //         }else {
+        //             setFinalMatch([...teams])
+        //         }
+        //         setLoading(false)
+        //     })
+        // })
     }, [])
 
 
