@@ -26,7 +26,7 @@ const CustomSeed = ({seed, breakpoint}: IRenderSeedProps) => {
               style={{fontSize: 12}}>
             <SeedItem>
                 <div onClick={() => clickHandler(seed?.id as string)} style={{cursor: "pointer"}}>
-                    <SeedTeam style={{backgroundColor: '#9a1132', borderBottom: '1px solid white'}}>
+                    <SeedTeam style={{backgroundColor: seed.winner === seed.teams[0].name ? '#1a7c14' : '#9a1132', borderBottom: '1px solid white'}}>
                         {
                             seed.teams[0]?.flag && (
                                 <Image
@@ -36,9 +36,15 @@ const CustomSeed = ({seed, breakpoint}: IRenderSeedProps) => {
                                     alt={seed.teams[0]?.name!!}/>
                             )
                         }
-                        {seed.teams[0]?.name || 'TBD'}
+                        <Typography variant={'subtitle2'}>
+                            {seed.teams[0]?.name || 'TBD'}
+                        </Typography>
+                        {seed.status === 'completed' && seed.teams[0]?.score}
+                        {!!seed.teams[0]?.penalty && <Typography variant={'subtitle2'}>
+                            ( {seed.teams[0]?.penalty} )
+                        </Typography>}
                     </SeedTeam>
-                    <SeedTeam style={{backgroundColor: '#9a1132'}}>
+                    <SeedTeam style={{backgroundColor: seed.winner === seed.teams[1].name ? '#1a7c14' : '#9a1132',}}>
                         {
                             seed.teams[1]?.flag && (
                                 <Image
@@ -48,7 +54,13 @@ const CustomSeed = ({seed, breakpoint}: IRenderSeedProps) => {
                                     alt={seed.teams[1]?.name!!}/>
                             )
                         }
-                        {seed.teams[1]?.name || 'TBD'}
+                        <Typography variant={'subtitle2'}>
+                            {seed.teams[1]?.name || 'TBD'}
+                        </Typography>
+                        {seed.status === 'completed' && seed.teams[1]?.score}
+                        {!!seed.teams[0]?.penalty && <Typography variant={'subtitle2'}>
+                            ( {seed.teams[1]?.penalty} )
+                        </Typography>}
                     </SeedTeam>
                 </div>
                 <div>{seed.date}</div>
@@ -195,19 +207,21 @@ const PlayoffChart = () => {
 
 
             res.map((stage,index) => {
-                const teams = stage.map((match: MatchI): ISeedProps => {
-                            return {
-                                id: match.id,
-                                date: new Date(match.date).toLocaleDateString('en-US', {
-                                    weekday: 'short',
-                                    day: '2-digit',
-                                    month: 'short',
-                                    hour: 'numeric',
-                                    minute: '2-digit',
-                                    timeZoneName: 'longGeneric'
-                                }),
-                                teams: [{name: match.homeTeam.name, flag: match.homeTeam.country}, {name: match.awayTeam.name, flag: match.awayTeam.country}],
-                            }
+                const teams = stage.matches.sort((a, b) => (b.matchNumber!! < a.matchNumber!!) ? 1 : (b.matchNumber!! > a.matchNumber!!) ? -1 : 0).map((match: MatchI): ISeedProps => {
+                    return {
+                        id: match.id,
+                        date: new Date(match.date).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            day: '2-digit',
+                            month: 'short',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            timeZoneName: 'longGeneric'
+                        }),
+                        winner: match.status === 'completed' ? match.winner : false,
+                        status: match.status,
+                        teams: [{name: match.homeTeam.name, flag: match.homeTeam.country, score: match.homeTeam.goals,penalty: match.homeTeam.penalties}, {name: match.awayTeam.name, flag: match.awayTeam.country, score: match.awayTeam.goals,penalty: match.awayTeam.penalties}],
+                    }
                 })
                 // if(index === 0){
                 //     setRoundMatches([...teams])
