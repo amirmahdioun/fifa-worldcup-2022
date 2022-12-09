@@ -87,7 +87,7 @@ const Matches = () => {
                                     color={theme.palette.primary.main}>Qatar World Cup 2022 Matches</Typography>
                     </Box>
                     {
-                        yesterdayMatches && (
+                        !!yesterdayMatches?.length && (
                             <Box my={'2rem'}>
                                 <Typography variant={'h6'}
                                             color={theme.palette.primary.main}>Yesterday Matches</Typography>
