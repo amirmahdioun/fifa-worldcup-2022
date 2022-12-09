@@ -207,11 +207,17 @@ const LiveMatchContent = ({currentLive}: Props) => {
                            justifyContent={'center'}>
                         <Typography fontWeight={700}
                                     variant={small ? 'subtitle1' : medium ? 'h6' : 'subtitle2'}>{match?.homeTeam.goals!!}</Typography>
+                        {
+                            !!match?.homeTeam.penalties && <Typography fontWeight={700} marginLeft={'3px'} variant={small ? 'subtitle1' : medium ? 'h6' : 'caption'}>( {match?.homeTeam.penalties} )</Typography>
+                        }
                         <Typography fontWeight={700}
                                     variant={small ? 'subtitle1' : medium ? 'h6' : 'subtitle2'}
                                     mx={small ? '0.5rem' : medium ? '2rem' : '0.2rem'}>-</Typography>
                         <Typography fontWeight={700}
                                     variant={small ? 'subtitle1' : medium ? 'h6' : 'subtitle2'}>{match?.awayTeam.goals!!}</Typography>
+                        {
+                            !!match?.awayTeam.penalties && <Typography fontWeight={700} marginLeft={'3px'} variant={small ? 'subtitle1' : medium ? 'h6' : 'caption'}>( {match?.awayTeam.penalties} )</Typography>
+                        }
                     </Grid2>
                     <Grid2 xs={4}
                            display={'flex'}
