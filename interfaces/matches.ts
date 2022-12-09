@@ -74,4 +74,6 @@ export interface MatchI {
     createdAt: string,
     date: string,
     updatedAt: string,
+    matchNumber?: number,
+    winner?: string,
 }
