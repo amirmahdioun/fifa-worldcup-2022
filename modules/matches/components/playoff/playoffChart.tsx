@@ -230,7 +230,7 @@ const PlayoffChart = () => {
                     setQuarterMatches([...teams])
                 }else if(index === 2){
                     setSemiFinalMatches([...teams])
-                }else if(index === 3) {
+                }else if(index === 4) {
                     setFinalMatch([...teams])
                 }
                 setLoading(false)
